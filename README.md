@@ -51,11 +51,15 @@ Add the following to the vim-plug section of your .vimrc or init.vim:
    already existing), then navigate to it:
 
     For Vim:
+
             ~/.vim/pack/*/start
+
     (* may be any name, e.g. ~/.vim/pack/foobar/start)
 
     For Neovim:
+
             ~/.local/share/nvim/site/pack/*/start
+
     (* may be any name, e.g. ~/.local/share/nvim/site/pack/foobar/start)
 
 2. Clone the plugin in the above directory:
