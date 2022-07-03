@@ -25,7 +25,7 @@ function! TimestampedBackup()
 		endif
 		call mkdir(g:timestampedbackup_dir,  'p')
 		if has("win32") || has ("win64")
-			execute '!attrib +h "' . g:timestampedbackup_dir . '"'
+			silent execute '!attrib +h "' . g:timestampedbackup_dir . '"'
 		endif
 		silent execute 'write' fname
 		let all_backups = filter(split(globpath(g:timestampedbackup_dir, expand('%') . g:timestampedbackup_sep . '*'), '\n'), '!isdirectory(v:val)')
@@ -39,4 +39,7 @@ function! TimestampedBackup()
 	endif
 endfunction
 
-autocmd BufWritePost * call TimestampedBackup()
+if !exists("timestampedbackup_autocommand_loaded")
+	let timestampedbackup_autocommand_loaded = 1
+	autocmd BufWritePost * call TimestampedBackup()
+endif
