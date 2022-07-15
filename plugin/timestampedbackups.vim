@@ -14,7 +14,7 @@ function! TimestampedBackup()
 	let g:timestampedbackup_enabled = get(g:, "timestampedbackup_enabled", 1)
 	let g:timestampedbackup_max_filesize = get(g:, "timestampedbackup_max_filesize", 10485760)
 	if g:timestampedbackup_enabled && wordcount()['bytes'] <= g:timestampedbackup_max_filesize
-		let g:timestampedbackup_dir = get(g:, "timestampedbackup_dir", ".backups")
+		let g:timestampedbackup_dir = get(g:, "timestampedbackup_dir", ".history")
 		let g:timestampedbackup_total = get(g:, "timestampedbackup_total", 5)
 		let g:timestampedbackup_sep = get(g:, "timestampedbackup_sep", "__")
 		let fname_split = split(expand('%'), '\.')

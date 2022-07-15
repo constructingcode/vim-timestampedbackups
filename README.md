@@ -8,11 +8,12 @@ I don't like how text editors only save a single backup of a file as
 "examplefile.vim~" so I created my own Vim/Neovim plugin to save multiple
 backups in a hidden backup directory.  There are a few user-configurable
 options that can be specified in your .vimrc or init.vim.  The defaults will
-create a .backups/ directory in the same location as the file being written to
-disk.  The defaults will save 5 backups (a copy of the current file and 4
-historical backups) in the following format with the ISO 8601 basic format
-timestamp appended (extended format may have some characters that may conflict
-with some operating systems):
+create a .history/ directory in the same location as the file being written to
+disk.  Personally, I also like using .history/ for my undo-history too, so it's
+all in the same hidden directory.  The defaults will save 5 backups (a copy of
+the current file and 4 historical backups) in the following format with the ISO
+8601 basic format timestamp appended (extended format may have some characters
+that may conflict with some operating systems):
 
         examplefile.vim__20220619T152340.vim
         examplefile.vim__20220624T131757.vim
@@ -81,7 +82,7 @@ uninstalling.  Default is 1.  Setting to 0 will disable.
 than this will not be backed up.
 
 - *g:timestampedbackup_dir* -> Subdirectory that will be created to hold backup
-files.  Default is ".backups"
+files.  Default is ".history"
 
 - *g:timestampedbackup_total* -> Total backups to be saved for each file.
 Default is 5 (current + 4 historical backups)
