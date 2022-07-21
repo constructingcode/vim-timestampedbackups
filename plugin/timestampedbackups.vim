@@ -9,7 +9,6 @@
 " directory after every write.  See README.md for more details.
 
 
-
 function! TimestampedBackup()
 	let g:timestampedbackup_enabled = get(g:, "timestampedbackup_enabled", 1)
 	let g:timestampedbackup_max_filesize = get(g:, "timestampedbackup_max_filesize", 10485760)
@@ -17,6 +16,7 @@ function! TimestampedBackup()
 		let g:timestampedbackup_dir = get(g:, "timestampedbackup_dir", ".history")
 		let g:timestampedbackup_total = get(g:, "timestampedbackup_total", 5)
 		let g:timestampedbackup_sep = get(g:, "timestampedbackup_sep", "__")
+		cd %:h
 		let fname_split = split(expand('%'), '\.')
 		let fname = g:timestampedbackup_dir . '/' . expand('%') . g:timestampedbackup_sep . strftime('%Y%m%dT%H%M%S')
 		if len(fname_split) > 1
@@ -27,7 +27,7 @@ function! TimestampedBackup()
 		if has("win32") || has ("win64")
 			silent execute '!attrib +h "' . g:timestampedbackup_dir . '"'
 		endif
-		silent execute 'write' fname
+		keepalt silent execute 'keepalt write' fname
 		let all_backups = filter(split(globpath(g:timestampedbackup_dir, expand('%') . g:timestampedbackup_sep . '*'), '\n'), '!isdirectory(v:val)')
 		call sort(all_backups)
 		if len(all_backups) > g:timestampedbackup_total
@@ -38,6 +38,7 @@ function! TimestampedBackup()
 		endif
 	endif
 endfunction
+
 
 if !exists("timestampedbackup_autocommand_loaded")
 	let timestampedbackup_autocommand_loaded = 1
