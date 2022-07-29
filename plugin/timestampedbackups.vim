@@ -27,7 +27,7 @@ function! TimestampedBackup()
 		if has("win32") || has ("win64")
 			silent execute '!attrib +h "' . g:timestampedbackup_dir . '"'
 		endif
-		keepalt silent execute 'keepalt write' fname
+		silent execute 'keepalt write' fname
 		let all_backups = filter(split(globpath(g:timestampedbackup_dir, expand('%') . g:timestampedbackup_sep . '*'), '\n'), '!isdirectory(v:val)')
 		call sort(all_backups)
 		if len(all_backups) > g:timestampedbackup_total
