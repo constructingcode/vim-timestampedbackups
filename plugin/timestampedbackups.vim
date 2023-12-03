@@ -36,6 +36,7 @@ function! TimestampedBackup()
 				call delete(old_fname)
 			endfor
 		endif
+		lcd -
 	endif
 endfunction
 
