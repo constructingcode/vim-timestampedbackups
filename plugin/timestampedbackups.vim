@@ -16,7 +16,7 @@ function! TimestampedBackup()
 		let g:timestampedbackup_dir = get(g:, "timestampedbackup_dir", ".history")
 		let g:timestampedbackup_total = get(g:, "timestampedbackup_total", 5)
 		let g:timestampedbackup_sep = get(g:, "timestampedbackup_sep", "__")
-		cd %:h
+		lcd %:p:h
 		let fname_split = split(expand('%'), '\.')
 		let fname = g:timestampedbackup_dir . '/' . expand('%') . g:timestampedbackup_sep . strftime('%Y%m%dT%H%M%S')
 		if len(fname_split) > 1
